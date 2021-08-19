@@ -79,11 +79,7 @@ function handleRequest(serviceUrl) {
       let query = require('url').parse(req.url).query
       logger.info({ msg: '==============================/ML_URL/* ===================================called - ' + mlURL + req.method + ' - ' + req.url });
       if (query) {
-        console.log("mlURL :",mlURL);
-        console.log("urlParam :",urlParam);
-        console.log(require('url').parse(mlURL + urlParam + '?' + query));
-        const url = require('url').parse(mlURL + urlParam + '?' + query).path;
-        console.log("url :",url);
+        const url = require('url').parse(mlURL + urlParam + '?' + query).path
         return url
       } else {
         const url = require('url').parse(mlURL + urlParam).path
@@ -91,6 +87,7 @@ function handleRequest(serviceUrl) {
       }
     },
     userResDecorator: (proxyRes, proxyResData, req, res) => {
+      console.log(proxyRes);
       try {
         const parsedData = JSON.parse(proxyResData.toString('utf8'));
         if (proxyRes.statusCode === 404) res.redirect('/')
