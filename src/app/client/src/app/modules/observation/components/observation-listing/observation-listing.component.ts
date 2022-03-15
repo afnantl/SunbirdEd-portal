@@ -196,7 +196,7 @@ export class ObservationListingComponent
     await this.getDataParam();
     const paramOption = {
       url: this.config.urlConFig.URLS.OBSERVATION.OBSERVATION_LISTING,
-      param: { page: page, limit: this.limit, search: this.searchData },
+      param: { page: page, limit: this.limit, search: "" },
       data: this.payload
     };
 
